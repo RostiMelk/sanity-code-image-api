@@ -1,0 +1,20 @@
+{
+  "name": "sanity-code-image-api",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^22.5.1",
+    "@types/react": "^19.0.8",
+    "@vercel/node": "^3.2.10",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@sreetamdas/karma": "^3.1.1",
+    "html-to-react": "^1.7.0",
+    "js-yaml": "^4.1.0",
+    "react": "^19.0.0",
+    "satori": "^0.12.1",
+    "sharp": "^0.33.5",
+    "shiki": "^2.2.0",
+    "zod": "^3.24.1"
+  }
+}
