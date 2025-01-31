@@ -3,9 +3,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "tsx --watch src/server.ts",
-    "build": "tsc",
-    "start": "node public/server.js"
+    "vercel": "vercel dev"
   },
   "devDependencies": {
     "@types/node": "^22.5.1",

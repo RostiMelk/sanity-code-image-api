@@ -1,20 +1,16 @@
 import type { FastifyPluginAsync } from "fastify";
-import { createImage } from "./core/createImage.js";
-import { Snippet } from "./types/index.js";
+import image from "./routes/image";
 
-const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-  fastify.post("/api/image", async (request, reply) => {
-    const body = request.body;
-    const parsedBody = Snippet.parse(body);
-    const imageResponse = await createImage(parsedBody);
+export type AppOptions = {};
 
-    if (!imageResponse) {
-      reply.code(500).send("Failed to generate image");
-      return;
-    }
+const options: AppOptions = {};
 
-    return imageResponse;
-  });
+const app: FastifyPluginAsync<AppOptions> = async (
+  fastify,
+  opts,
+): Promise<void> => {
+  void fastify.register(image);
 };
 
-export default root;
+export default app;
+export { app, options };
