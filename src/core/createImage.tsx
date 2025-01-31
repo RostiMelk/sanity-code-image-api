@@ -21,8 +21,6 @@ const MIN_WIDTH = 0;
 const MIN_HEIGHT = 0;
 const HEADER_HEIGHT = FONT_SIZE * 2.5;
 
-const theme = normalizeTheme(karmaDarkJSON as unknown as ThemeRegistrationAny);
-
 const cachedFonts: {
   jetBrains?: Buffer;
   inter?: Buffer;
@@ -66,6 +64,10 @@ export async function createImage(props: Snippet) {
     const fonts = await loadFonts();
 
     const { getSingletonHighlighter, normalizeTheme } = await import("shiki");
+
+    const theme = normalizeTheme(
+      karmaDarkJSON as unknown as ThemeRegistrationAny,
+    );
 
     const shiki = await getSingletonHighlighter({
       themes: [theme],
