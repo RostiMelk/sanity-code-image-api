@@ -1,5 +1,8 @@
+import React from "react";
+import type { SVGProps } from "react";
+
 export const SanityLogo = (
-  props: React.SVGProps<SVGSVGElement> & { [key: string]: unknown },
+  props: SVGProps<SVGSVGElement> & { [key: string]: unknown },
 ) => (
   <svg
     width="25"

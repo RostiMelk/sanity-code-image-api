@@ -15,11 +15,11 @@
   },
   "dependencies": {
     "@sreetamdas/karma": "^3.1.1",
+    "@vercel/og": "^0.6.5",
     "fastify": "^5.2.1",
     "html-to-react": "^1.7.0",
     "js-yaml": "^4.1.0",
     "react": "^19.0.0",
-    "satori": "^0.12.1",
     "sharp": "^0.33.5",
     "shiki": "^2.2.0",
     "zod": "^3.24.1"

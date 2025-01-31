@@ -11,6 +11,9 @@ importers:
       '@sreetamdas/karma':
         specifier: ^3.1.1
         version: 3.1.1
+      '@vercel/og':
+        specifier: ^0.6.5
+        version: 0.6.5
       fastify:
         specifier: ^5.2.1
         version: 5.2.1
@@ -23,9 +26,6 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.0.0
-      satori:
-        specifier: ^0.12.1
-        version: 0.12.1
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
@@ -378,6 +378,10 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
+  '@resvg/resvg-wasm@2.4.0':
+    resolution: {integrity: sha512-C7c51Nn4yTxXFKvgh2txJFNweaVcfUPQxwEUFw4aWsCmfiBDJsTSwviIF8EcwjQ6k8bPyMWCl1vw4BdxE569Cg==}
+    engines: {node: '>= 10'}
+
   '@rollup/pluginutils@4.2.1':
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
     engines: {node: '>= 8.0.0'}
@@ -464,6 +468,10 @@ packages:
 
   '@vercel/node@3.2.29':
     resolution: {integrity: sha512-WRVYidBqtRyYUw36v/WyUB2v97PsiV2+LepUiOPWcW9UpszQGGT2DAzsXOYqWveXMJKFhx0aETR6Nn6i+Yps1Q==}
+
+  '@vercel/og@0.6.5':
+    resolution: {integrity: sha512-GFXtgid3+TcVHTd668a10vGpzAh4Ty/yBZPRxKf1UicI8Vi8EthfvSxcaLW0KvQBBe1+d7TcjecLZHRT8JzQ4g==}
+    engines: {node: '>=16'}
 
   '@vercel/static-config@3.0.0':
     resolution: {integrity: sha512-2qtvcBJ1bGY0dYGYh3iM7yGKkk971FujLEDXzuW5wcZsPr1GSEjO/w2iSr3qve6nDDtBImsGoDEnus5FI4+fIw==}
@@ -1642,6 +1650,8 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.18.0
 
+  '@resvg/resvg-wasm@2.4.0': {}
+
   '@rollup/pluginutils@4.2.1':
     dependencies:
       estree-walker: 2.0.2
@@ -1777,6 +1787,12 @@ snapshots:
       - '@swc/wasm'
       - encoding
       - supports-color
+
+  '@vercel/og@0.6.5':
+    dependencies:
+      '@resvg/resvg-wasm': 2.4.0
+      satori: 0.12.1
+      yoga-wasm-web: 0.3.3
 
   '@vercel/static-config@3.0.0':
     dependencies:

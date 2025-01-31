@@ -1,10 +1,10 @@
+import React from "react";
 import {
   getSingletonHighlighter,
   normalizeTheme,
   type ThemeRegistrationAny,
 } from "shiki";
-import satori from "satori";
-import sharp from "sharp";
+import { ImageResponse } from "@vercel/og";
 import { Parser as HtmlToReactParser } from "html-to-react";
 import { addTwToHast } from "../utils/hast";
 import { cloneElement } from "react";
@@ -52,25 +52,6 @@ export async function createImage(props: Snippet) {
     const interData = await fs.readFile(
       path.join(process.cwd(), "fonts/inter.ttf"),
     );
-
-    const options = {
-      width: calculatedWidth,
-      height: calculatedHeight,
-      fonts: [
-        {
-          name: "mono",
-          data: jetBrainsMonoData,
-          style: "normal",
-          weight: 400,
-        },
-        {
-          name: "inter",
-          data: interData,
-          style: "normal",
-          weight: 400,
-        },
-      ],
-    };
 
     const shiki = await getSingletonHighlighter({
       themes: [theme],
@@ -136,24 +117,44 @@ export async function createImage(props: Snippet) {
       tw: "m-0",
     });
 
-    const svg = await satori(
-      <main tw={`text-[${FONT_SIZE_PX}] flex w-full h-full bg-[#1b1d27] p-16`}>
-        <figure tw="flex-col shadow-2xl border-2 border-[#252837] rounded-3xl pb-10">
-          <header tw="flex items-center p-8 pl-9 pb-6">
-            <SanityLogo tw="w-15 h-15 mr-8 shadow-lg shadow-red-500/50 rounded-xl" />
-            <span tw="text-[#f6f6f8] text-2xl" style={{ fontFamily: "inter" }}>
-              {fileName}
-            </span>
-          </header>
-          {codeWithStyle ?? "Something went wrong"}
-        </figure>
-      </main>,
-      options,
+    return new ImageResponse(
+      (
+        <main
+          tw={`text-[${FONT_SIZE_PX}] flex w-full h-full bg-[#1b1d27] p-16`}
+        >
+          <figure tw="flex-col shadow-2xl border-2 border-[#252837] rounded-3xl pb-10">
+            <header tw="flex items-center p-8 pl-9 pb-6">
+              <SanityLogo tw="w-15 h-15 mr-8 shadow-lg shadow-red-500/50 rounded-xl" />
+              <span
+                tw="text-[#f6f6f8] text-2xl"
+                style={{ fontFamily: "inter" }}
+              >
+                {fileName}
+              </span>
+            </header>
+            {codeWithStyle ?? "Something went wrong"}
+          </figure>
+        </main>
+      ),
+      {
+        width: calculatedWidth,
+        height: calculatedHeight,
+        fonts: [
+          {
+            name: "mono",
+            data: jetBrainsMonoData,
+            style: "normal",
+            weight: 400,
+          },
+          {
+            name: "inter",
+            data: interData,
+            style: "normal",
+            weight: 400,
+          },
+        ],
+      },
     );
-
-    const png = await sharp(Buffer.from(svg)).png().toBuffer();
-
-    return png;
   } catch (error) {
     console.error("Error generating image:", error);
     return null;
