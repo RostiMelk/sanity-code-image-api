@@ -9,6 +9,10 @@ export function init() {
     logger: true,
   });
 
+  app.get("/", () => {
+    return { hello: "world" };
+  });
+
   app.post("/api/image", async (request, reply) => {
     const body = request.body;
     const parsedBody = Snippet.parse(body);
