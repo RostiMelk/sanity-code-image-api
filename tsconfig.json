@@ -1,18 +1,17 @@
 {
-  "include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    "skipLibCheck": true,
-    "lib": ["ES2019"],
-    "isolatedModules": true,
+    /* Language and Environment */
+    "target": "es2020",
+    "module": "commonjs",
+    "rootDir": "src",
+    "outDir": "public",
     "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "target": "ES2019",
-    "strict": true,
-    "allowJs": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "noEmit": true
+    "jsx": "react",
+    "resolveJsonModule": true,
+
+    /* Type Checking */
+    "strict": true,
+    "skipLibCheck": true
   }
 }
