@@ -29,11 +29,10 @@ export function init() {
   return app;
 }
 
-// Replace the CommonJS check with ESM style
 if (import.meta.url === import.meta.resolve("./server.js")) {
   init()
     .listen({
-      port: PORT,
+      port: Number(process.env.PORT) || PORT,
     })
     .then(() => {
       console.log(`Running on port ${PORT}`);
