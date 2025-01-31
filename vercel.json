@@ -5,10 +5,6 @@
       "src": "package.json",
       "use": "@vercel/node",
       "config": { "outputDirectory": "public" }
-    },
-    {
-      "src": "api/serverless.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
