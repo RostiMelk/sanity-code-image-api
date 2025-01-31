@@ -3,26 +3,25 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "vercel": "vercel dev"
+    "vercel": "vercel dev",
+    "build": "tsc -p tsconfig.json"
   },
   "devDependencies": {
     "@types/node": "^22.5.1",
     "@types/react": "^19.0.8",
     "@vercel/node": "^3.2.29",
-    "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {
     "@sreetamdas/karma": "^3.1.1",
     "@vercel/og": "^0.6.5",
     "dotenv": "^16.4.7",
-    "fastify": "^5.2.1",
+    "fastify": "^4.29.0",
     "html-to-react": "^1.7.0",
     "js-yaml": "^4.1.0",
     "react": "^19.0.0",
     "sharp": "^0.33.5",
     "shiki": "^2.2.0",
     "zod": "^3.24.1"
-  },
-  "type": "module"
+  }
 }

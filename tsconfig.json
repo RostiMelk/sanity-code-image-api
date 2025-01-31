@@ -4,12 +4,11 @@
     "target": "es2020",
     "module": "ESNext",
     "moduleResolution": "node",
-    "outDir": "public",
+    "outDir": "./build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "resolveJsonModule": true,
-
 
     /* Type Checking */
     "strict": true,

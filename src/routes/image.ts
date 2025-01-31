@@ -1,6 +1,6 @@
 import type { FastifyPluginAsync } from "fastify";
-import { createImage } from "./core/createImage.js";
-import { Snippet } from "./types/index.js";
+import { createImage } from "../core/createImage.js";
+import { Snippet } from "../types/index.js";
 
 const image: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
   fastify.post("/api/image", async (request, reply) => {

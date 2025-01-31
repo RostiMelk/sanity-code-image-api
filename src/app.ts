@@ -1,16 +1,21 @@
-import type { FastifyPluginAsync } from "fastify";
+import type {
+  FastifyInstance,
+  FastifyReply,
+  FastifyRequest,
+  FastifyServerOptions,
+} from "fastify";
 import image from "./routes/image";
 
-export type AppOptions = {};
-
-const options: AppOptions = {};
-
-const app: FastifyPluginAsync<AppOptions> = async (
-  fastify,
-  opts,
-): Promise<void> => {
-  void fastify.register(image);
-};
+async function app(
+  instance: FastifyInstance,
+  opts: FastifyServerOptions,
+  done: () => void,
+) {
+  instance.get("/", async (req: FastifyRequest, res: FastifyReply) => {
+    res.status(200).send({ hello: "World" });
+  });
+  instance.register(image);
+  done();
+}
 
 export default app;
-export { app, options };
