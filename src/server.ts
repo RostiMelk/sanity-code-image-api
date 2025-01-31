@@ -25,6 +25,7 @@ export function init() {
   return app;
 }
 
+// Execute the app when called directly( ex.: "npm run dev")
 if (import.meta.url === import.meta.resolve("./server.js")) {
   init()
     .listen({
