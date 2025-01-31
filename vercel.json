@@ -2,9 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/serverless.js",
+      "src": "src/server.ts",
       "use": "@vercel/node",
-      "config": { "outputDirectory": "public" }
+      "config": {
+        "includeFiles": ["src/**/*", "fonts/**/*"]
+      }
     }
   ],
   "routes": [
