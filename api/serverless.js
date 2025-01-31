@@ -1,14 +1,13 @@
+// Read the .env file.
 import * as dotenv from "dotenv";
 dotenv.config();
 
+// Require the framework
 import { init } from "../public/server.js";
 
-export default async function handler(req, res) {
+export default async (req, res) => {
+  console.log("Request received", req.url);
   const app = init();
   await app.ready();
-
-  return new Promise((resolve, reject) => {
-    app.server.emit("request", req, res);
-    res.on("finish", resolve);
-  });
-}
+  app.server.emit("request", req, res);
+};
