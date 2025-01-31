@@ -1,6 +1,6 @@
 import React from "react";
 import type { ThemeRegistrationAny } from "shiki";
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "@vercel/og/";
 import { Parser as HtmlToReactParser } from "html-to-react";
 import { addTwToHast } from "../utils/hast";
 import { cloneElement } from "react";
