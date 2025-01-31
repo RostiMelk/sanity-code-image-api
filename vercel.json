@@ -6,10 +6,15 @@
       "config": { "outputDirectory": "public" }
     }
   ],
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/api/serverless.js"
+      "src": "/api/image",
+      "methods": ["POST"],
+      "dest": "/api/serverless.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/serverless.js"
     }
   ]
 }
