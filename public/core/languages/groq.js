@@ -1,13 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.groqLanguage = void 0;
 /**
  * Copied from https://github.com/sanity-io/vscode-sanity/blob/main/grammars/groq.json
  * Unfortunately, we don't have a separate package for this grammar and adding
  * a VSCode extension as a dependency seems undesirable, so just copy-n-pasted.
  * That file hasn't been updated in years, so 🤞 this proves fine.
  */
-exports.groqLanguage = {
+export const groqLanguage = {
     // $schema: "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
     name: "groq",
     scopeName: "source.groq",

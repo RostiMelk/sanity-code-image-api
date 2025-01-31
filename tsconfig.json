@@ -2,8 +2,8 @@
   "compilerOptions": {
     /* Language and Environment */
     "target": "es2020",
-    "module": "commonjs",
-    "rootDir": "src",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "outDir": "public",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

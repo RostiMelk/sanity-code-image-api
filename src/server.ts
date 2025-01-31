@@ -1,16 +1,12 @@
 import Fastify from "fastify";
-import { createImage } from "./core/createImage";
-import { Snippet } from "./types";
+import { createImage } from "./core/createImage.js";
+import { Snippet } from "./types/index.js";
 
 const PORT = 3333;
 
 export function init() {
   const app = Fastify({
     logger: true,
-  });
-
-  app.get("/", async (request, reply) => {
-    return "Hello from Sanity.io";
   });
 
   app.post("/api/image", async (request, reply) => {
@@ -29,7 +25,8 @@ export function init() {
   return app;
 }
 
-if (require.main === module) {
+// Replace the CommonJS check with ESM style
+if (import.meta.url === import.meta.resolve("./server.js")) {
   init()
     .listen({
       port: PORT,

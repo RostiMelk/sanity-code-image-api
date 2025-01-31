@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.addTwToHast = addTwToHast;
-function addTwToHast(node, twName) {
+export function addTwToHast(node, twName) {
     var _a;
     if (!twName)
         return node;

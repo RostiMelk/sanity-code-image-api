@@ -1,21 +1,15 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.init = init;
-const fastify_1 = __importDefault(require("fastify"));
-const createImage_1 = require("./core/createImage");
-const types_1 = require("./types");
+import Fastify from "fastify";
+import { createImage } from "./core/createImage.js";
+import { Snippet } from "./types/index.js";
 const PORT = 3333;
-function init() {
-    const app = (0, fastify_1.default)({
+export function init() {
+    const app = Fastify({
         logger: true,
     });
     app.post("/api/image", async (request, reply) => {
         const body = request.body;
-        const parsedBody = types_1.Snippet.parse(body);
-        const imageResponse = await (0, createImage_1.createImage)(parsedBody);
+        const parsedBody = Snippet.parse(body);
+        const imageResponse = await createImage(parsedBody);
         if (!imageResponse) {
             reply.code(500).send("Failed to generate image");
             return;
@@ -24,7 +18,8 @@ function init() {
     });
     return app;
 }
-if (require.main === module) {
+// Replace the CommonJS check with ESM style
+if (import.meta.url === import.meta.resolve("./server.js")) {
     init()
         .listen({
         port: PORT,
