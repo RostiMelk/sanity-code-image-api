@@ -1,14 +1,13 @@
 import React from "react";
 import type { ThemeRegistrationAny } from "shiki";
-import { ImageResponse } from "@vercel/og/";
-import { Parser as HtmlToReactParser } from "html-to-react";
-import { addTwToHast } from "../utils/hast";
 import { cloneElement } from "react";
 import karmaDarkJSON from "@sreetamdas/karma/themes/default.json";
 import { SanityLogo } from "../components/SanityLogo";
 import type { Snippet } from "../types";
 import fs from "node:fs/promises";
 import path from "node:path";
+import { Parser as HtmlToReactParser } from "html-to-react";
+import { addTwToHast } from "../utils/hast";
 
 const FONT_SIZE = 26;
 const FONT_SIZE_PX = `${FONT_SIZE}px`;
@@ -64,6 +63,7 @@ export async function createImage(props: Snippet) {
     const fonts = await loadFonts();
 
     const { getSingletonHighlighter, normalizeTheme } = await import("shiki");
+    const { ImageResponse } = await import("@vercel/og");
 
     const theme = normalizeTheme(
       karmaDarkJSON as unknown as ThemeRegistrationAny,
