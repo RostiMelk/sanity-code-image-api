@@ -9,6 +9,10 @@ export function init() {
     logger: true,
   });
 
+  app.get("/", async (request, reply) => {
+    return "Hello from Sanity.io";
+  });
+
   app.post("/api/image", async (request, reply) => {
     const body = request.body;
     const parsedBody = Snippet.parse(body);
