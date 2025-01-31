@@ -8,7 +8,7 @@ import { ImageResponse } from "@vercel/og";
 import { Parser as HtmlToReactParser } from "html-to-react";
 import { addTwToHast } from "../utils/hast.js";
 import { cloneElement } from "react";
-import karmaDarkJSON from "@sreetamdas/karma/themes/default.json" assert { type: "json" };
+import karmaDarkJSON from "@sreetamdas/karma/themes/default.json";
 import { SanityLogo } from "../components/SanityLogo.js";
 import type { Snippet } from "../types";
 import fs from "node:fs/promises";
