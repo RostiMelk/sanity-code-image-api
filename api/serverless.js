@@ -1,7 +1,3 @@
-// Read the .env file.
-import * as dotenv from "dotenv";
-dotenv.config();
-
 // Require the framework
 import { init } from "../public/server";
 
