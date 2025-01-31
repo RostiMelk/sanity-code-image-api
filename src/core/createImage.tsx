@@ -27,11 +27,33 @@ const HEADER_HEIGHT = FONT_SIZE * 2.5;
 
 const theme = normalizeTheme(karmaDarkJSON as unknown as ThemeRegistrationAny);
 
+const cachedFonts: {
+  jetBrains?: Buffer;
+  inter?: Buffer;
+} = {};
+
+async function loadFonts() {
+  if (!cachedFonts.jetBrains) {
+    cachedFonts.jetBrains = await fs.readFile(
+      path.join(process.cwd(), "fonts/jetbrains.ttf"),
+    );
+  }
+  if (!cachedFonts.inter) {
+    cachedFonts.inter = await fs.readFile(
+      path.join(process.cwd(), "fonts/inter.ttf"),
+    );
+  }
+  return {
+    jetBrains: cachedFonts.jetBrains,
+    inter: cachedFonts.inter,
+  };
+}
+
 export async function createImage(props: Snippet) {
   const { value, language, fileName, highlightLines = [] } = props;
 
   try {
-    const lines = value.split("\n");
+    const lines = value.trim().split("\n");
     const maxLineLength = Math.max(...lines.map((line) => line.length));
 
     const contentWidth = maxLineLength * CHAR_WIDTH;
@@ -45,13 +67,7 @@ export async function createImage(props: Snippet) {
       MIN_HEIGHT,
     );
 
-    const jetBrainsMonoData = await fs.readFile(
-      path.join(process.cwd(), "fonts/jetbrains.ttf"),
-    );
-
-    const interData = await fs.readFile(
-      path.join(process.cwd(), "fonts/inter.ttf"),
-    );
+    const fonts = await loadFonts();
 
     const shiki = await getSingletonHighlighter({
       themes: [theme],
@@ -63,7 +79,6 @@ export async function createImage(props: Snippet) {
     const code = shiki.codeToHtml(value, {
       theme: theme,
       lang: language,
-
       transformers: [
         {
           code(node) {
@@ -142,13 +157,13 @@ export async function createImage(props: Snippet) {
         fonts: [
           {
             name: "mono",
-            data: jetBrainsMonoData,
+            data: fonts.jetBrains,
             style: "normal",
             weight: 400,
           },
           {
             name: "inter",
-            data: interData,
+            data: fonts.inter,
             style: "normal",
             weight: 400,
           },
