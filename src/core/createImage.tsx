@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  getSingletonHighlighter,
-  normalizeTheme,
-  type ThemeRegistrationAny,
-} from "shiki";
+import type { ThemeRegistrationAny } from "shiki";
 import { ImageResponse } from "@vercel/og";
 import { Parser as HtmlToReactParser } from "html-to-react";
 import { addTwToHast } from "../utils/hast";
@@ -68,6 +64,8 @@ export async function createImage(props: Snippet) {
     );
 
     const fonts = await loadFonts();
+
+    const { getSingletonHighlighter, normalizeTheme } = await import("shiki");
 
     const shiki = await getSingletonHighlighter({
       themes: [theme],
